@@ -27,12 +27,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build ./api -t ${{ env.DOCKER_HUB_REPOSITORY }}:latest \
-                             -t ${{ env.DOCKER_HUB_REPOSITORY }}:${{ env.DOCKER_IMAGE_TAG }} \
-                             -t ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
           docker push ${{ env.DOCKER_HUB_REPOSITORY }}:latest
-          docker push ${{ env.DOCKER_HUB_REPOSITORY }}:${{ env.DOCKER_IMAGE_TAG }}
-          docker push ${{ env.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
 
       - name: Logout from Docker Hub
         run: docker logout
